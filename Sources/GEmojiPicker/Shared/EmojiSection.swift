@@ -36,6 +36,8 @@ public struct EmojiSection<T: Hashable>: View {
         }
     }
     
+   // macOS에서 다수의 버튼 사용시 로딩 속도가 엄청 느림
+#if false
     private var grid: some View {
         LazyVGrid(columns: columns) {
             ForEach(items, id: contentKeyPath) { item in
@@ -49,6 +51,20 @@ public struct EmojiSection<T: Hashable>: View {
             }
         }
     }
+#else
+    private var grid: some View {
+        LazyVGrid(columns: columns) {
+            ForEach(items, id: contentKeyPath) { item in
+                emojiItem(content: item[keyPath: contentKeyPath])
+                .buttonStyle(PlainButtonStyle())
+                .padding(4)
+                .onTapGesture {
+                    completionHandler(item)
+                }
+            }
+        }
+    }
+#endif
     
     private func emojiItem(content: String) -> some View {
         Text(content)
