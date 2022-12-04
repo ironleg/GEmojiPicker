@@ -66,8 +66,10 @@ public struct EmojiSection<T: Hashable>: View {
 #endif
     
     private func emojiItem(content: String) -> some View {
-        Text(content)
-           .font(.system(size: 30))
+        VStack {
+            Text(content)
+                 .font(.system(size: 30))
+        }
             //.font(.largeTitle)
     }
 }
