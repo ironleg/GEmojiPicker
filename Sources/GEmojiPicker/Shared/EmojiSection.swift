@@ -56,7 +56,7 @@ public struct EmojiSection<T: Hashable>: View {
         LazyVGrid(columns: columns) {
             ForEach(items, id: contentKeyPath) { item in
                 emojiItem(content: item[keyPath: contentKeyPath])
-                .padding()
+                .padding(4)
                 .onTapGesture {
                     completionHandler(item)
                 }
@@ -67,7 +67,8 @@ public struct EmojiSection<T: Hashable>: View {
     
     private func emojiItem(content: String) -> some View {
         Text(content)
-            .font(.largeTitle)
+           .font(.system(size: 30))
+            //.font(.largeTitle)
     }
 }
 
