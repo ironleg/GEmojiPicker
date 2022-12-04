@@ -56,8 +56,7 @@ public struct EmojiSection<T: Hashable>: View {
         LazyVGrid(columns: columns) {
             ForEach(items, id: contentKeyPath) { item in
                 emojiItem(content: item[keyPath: contentKeyPath])
-                .buttonStyle(PlainButtonStyle())
-                .padding(4)
+                .padding()
                 .onTapGesture {
                     completionHandler(item)
                 }
